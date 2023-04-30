@@ -1,0 +1,46 @@
+.container-fluid{
+
+    /*display: flex;*/
+    background-color: #000000;   
+    color: aliceblue;         
+
+}
+.cen{
+    text-align: center;
+}
+.ledgend{
+    margin-left: 200px;
+    font-size: 20px;
+}
+
+.input{
+
+    width: auto;
+    margin: 10px;
+    padding: 5px;
+    font-size: 10px;
+
+}
+.h3{
+    margin: 5px 0;
+}
+.table{
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    text-align: center;
+}
+
+.table td,table th{
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #000000;
+
+}
+
+.able tr td:last-child{
+    text-align: right;
+}
+.h1{
+    text-align: right;
+}
