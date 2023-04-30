@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <link rel="stylesheet" type="text/css" href="CSS/style_order.css">
+</head>
+<body>
+    <div class="cen">
+        <h1><b><u>Order now</u></b></h1>
+    </div>
+    
+    <div class = "container-fluid">
+        <div class="contanier">
+            
+            <div class ="part1">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    Full Name : <input type="text" id ="name"><br>
+
+                    Email : <input type="text" id="email">
+                </fieldset>
+            </div>
+
+            <div class="part2">
+                <fieldset>
+                    <legend>Your Orders</legend>
+                    Panner 65(Rs 155) : <input type="text" id = "paneer"><br>
+                    Paneer Chilli (Rs 220) : <input type="text"id="pc"><br>
+                    Paneer Manchiria(Rs 100) : <input type="text"id ="pm"><br>
+                    Paneer 8 to 8(Rs 120) : <input type="text" id ="p8"><br>
+                    Paneer 555(Rs 160) : <input type="text" id ="p5"><br>
+
+                    Finger Chicken(Rs 275) : <input type="text" id ="fc"><br>
+                    Chicken Grilled(Rs 300) : <input type="text" id ="cg"><br>
+                    Chicken Wrap(Rs 180) : <input type="text" id ="cw"><br>
+                    Chicken Marsala(Rs 200) : <input type="text" id ="cm"><br>
+
+                    Antipasto Salad(Rs 100) : <input type="text" id ="as"><br>
+                    BBQ Pork Salad(Rs 120) : <input type="text" id ="bp"><br>
+                    Broccoli Rabe(Rs 120) : <input type="text" id ="br"><br>
+                    Caesar Salad(Rs 80) : <input type="text" id ="cs"><br>
+
+                    Roti(Rs 10) : <input type="text" id ="r"><br>
+                    Nan(Rs 20) : <input type="text" id ="n"><br>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="container">
+            <fieldset>
+                <legend>Your Bill</legend>
+                <h3>Your Name : <span id ="name2"></span> </h3>
+                <h3>Email : <span id ="email2"></span></h3>
+                <table border="1">
+                    <thead>
+                        
+                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>
+                    <tbody id="billstmt"></tbody>
+                </thead>
+                </table>
+            </fieldset>
+
+            <h1>Total Amount : Rs.<span id ="amount"></span></h1>
+        </div>
+    </div>
+
+    <script>
+        var Panner_p=155,PaneerC_p=220,PaneerM_p=100, Paneer8_p=120,Paneer5_p=160,FingerC_p=275, 
+        ChickenG_p=300,ChickenW_p=180,ChickenM_p=200,AntipastoS_p=100,BBQ_p=120,Broccoli_p=120,Caesar_p=80 , roti_p=10,nan_p=20;
+    
+        var Panner_q=0,PaneerC_q=0,PaneerM_q=0, Paneer8_q=0,Paneer5_q=0,FingerC_q=0, 
+        ChickenG_q=0,ChickenW_q=0,ChickenM_q=0,AntipastoS_q=0,BBQ_q=0,Broccoli_q=0,Caesar_q=0,roti_q=0,nan_q=0;
+
+        var Pannerpriceshow="",PaneerCpriceshow="",PaneerMpriceshow="",Paneer8priceshow="",Paneer5priceshow="",FingerCpriceshow="",ChickenGpriceshow="",ChickenWpriceshow=""
+        ChickenMpriceshow="",AntipastoSpriceshow="",BBQpriceshow="",Broccolipriceshow="",Caesarpriceshow="",rotipriceshow="",nanpriceshow="";
+        
+
+        document.getElementById("name").addEventListener("keyup",function () {
+        name = document.getElementById("name").value;
+        document.getElementById("name2").innerHTML=name;
+
+    });
+    document.getElementById("email").addEventListener("keyup",function () {
+        email = document.getElementById("email").value;
+        document.getElementById("email2").innerHTML=email;
+    });
+
+    /* -------------------------Paneer--------------------------------------*/
+   document.getElementById("paneer").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            Pannerpriceshow="";
+            showbill();
+
+        }else{
+        Panner_q=this.value;
+        Pannerpriceshow = document.getElementById("billstmt").innerHTML="<tr><td>Paneer</td><td>RS."+Panner_p+"</td><td>"+Panner_q+"</td><td>"+Panner_p+"x"+Panner_q+"="+Panner_p*Panner_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+/* -------------------------Paneer Chilli --------------------------------------*/
+
+document.getElementById("pc").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            PaneerCpriceshow="";
+            showbill();
+
+        }else{
+        PaneerC_q=this.value;
+        PaneerCpriceshow = document.getElementById("billstmt").innerHTML="<tr><td> Paneer Chilli </td><td>RS."+PaneerC_p+"</td><td>"+PaneerC_q+"</td><td>"+PaneerC_p+"x"+PaneerC_q+"="+PaneerC_p*PaneerC_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+ /* ---------------------------Paneer Manchiria------------------------------------*/       
+ 
+ document.getElementById("pm").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            PaneerMpriceshow="";
+            showbill();
+
+        }else{
+        PaneerM_q=this.value;
+        PaneerMpriceshow= document.getElementById("billstmt").innerHTML="<tr><td>Paneer Manchiria</td><td>RS."+PaneerM_p+"</td><td>"+PaneerM_q+"</td><td>"+PaneerM_p+"x"+PaneerM_q+"="+PaneerM_p*PaneerM_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+         /* ----------------------------Paneer 8 to 8-----------------------------------*/       
+ 
+ document.getElementById("p8").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            Paneer8priceshow="";
+            showbill();
+
+        }else{
+        Paneer8_q=this.value;
+        Paneer8priceshow= document.getElementById("billstmt").innerHTML="<tr><td> Paneer 8 to 8</td><td>RS."+Paneer8_p+"</td><td>"+Paneer8_q+"</td><td>"+Paneer8_p+"x"+Paneer8_q+"="+Paneer8_p*Paneer8_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+
+         /* -------------------------Paneer5--------------------------------------*/       
+ 
+ document.getElementById("p5").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            Paneer5priceshow="";
+            showbill();
+
+        }else{
+            Paneer5_q=this.value;
+        Paneer5priceshow= document.getElementById("billstmt").innerHTML="<tr><td>Paneer555</td><td>RS."+Paneer5_p+"</td><td>"+Paneer5_q+"</td><td>"+Paneer5_p+"x"+PaneerM_q+"="+Paneer5_p*Paneer5_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+
+         /* ------------------------ Finger Chicken---------------------------------------*/       
+ 
+ document.getElementById("fc").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            FingerCpriceshow="";
+            showbill();
+
+        }else{
+            FingerC_q=this.value;
+        FingerCpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Finger Chicken</td><td>RS."+FingerC_p+"</td><td>"+FingerC_q+"</td><td>"+FingerC_p+"x"+FingerC_q+"="+FingerC_p*FingerC_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Chicken Grilled---------------------------------------*/       
+ 
+ document.getElementById("cg").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            ChickenGpriceshow="";
+            showbill();
+
+        }else{
+            ChickenG_q=this.value;
+        ChickenGpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Chicken Grilled</td><td>RS."+ChickenG_p+"</td><td>"+ChickenG_q+"</td><td>"+ChickenG_p+"x"+ChickenG_q+"="+ChickenG_p*ChickenG_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Chicken Wrap---------------------------------------*/       
+ 
+ document.getElementById("cw").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            ChickenWpriceshow="";
+            showbill();
+
+        }else{
+            ChickenW_q=this.value;
+        ChickenWpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Chicken Wrap</td><td>RS."+ChickenW_p+"</td><td>"+ChickenW_q+"</td><td>"+ChickenW_p+"x"+ChickenW_q+"="+ChickenW_p*ChickenW_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Chicken Marsala---------------------------------------*/       
+ 
+ document.getElementById("cm").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            ChickenMpriceshow="";
+            showbill();
+
+        }else{
+            ChickenM_q=this.value;
+        ChickenMpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Chicken Marsala</td><td>RS."+ChickenM_p+"</td><td>"+ChickenM_q+"</td><td>"+ChickenM_p+"x"+ChickenM_q+"="+ChickenM_p*ChickenM_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Antipasto Salad---------------------------------------*/       
+ 
+ document.getElementById("as").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            AntipastoSpriceshow="";
+            showbill();
+
+        }else{
+            AntipastoS_q=this.value;
+        AntipastoSpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Antipasto Salad</td><td>RS."+AntipastoS_p+"</td><td>"+AntipastoS_q+"</td><td>"+AntipastoS_p+"x"+AntipastoS_q+"="+AntipastoS_p*AntipastoS_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------  BBQ Pork Salad---------------------------------------*/       
+ 
+ document.getElementById("bp").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            BBQpriceshow="";
+            showbill();
+
+        }else{
+            BBQ_q=this.value;
+        BBQpriceshow= document.getElementById("billstmt").innerHTML="<tr><td>  BBQ Pork Salad</td><td>RS."+BBQ_p+"</td><td>"+BBQ_q+"</td><td>"+BBQ_p+"x"+BBQ_q+"="+BBQ_p*BBQ_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Broccoli Rabe---------------------------------------*/       
+ 
+ document.getElementById("br").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            Broccolipriceshow="";
+            showbill();
+
+        }else{
+            Broccoli_q=this.value;
+        Broccolipriceshow= document.getElementById("billstmt").innerHTML="<tr><td>Broccoli Rabe</td><td>RS."+Broccoli_p+"</td><td>"+Broccoli_q+"</td><td>"+Broccoli_p+"x"+Broccoli_q+"="+Broccoli_p*Broccoli_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Caesar Salad---------------------------------------*/       
+ 
+ document.getElementById("cs").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            Caesarpriceshow="";
+            showbill();
+
+        }else{
+            Caesar_q=this.value;
+        Caesarpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Caesar Salad</td><td>RS."+Caesar_p+"</td><td>"+Caesar_q+"</td><td>"+Caesar_p+"x"+Caesar_q+"="+Caesar_p*Caesar_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------ Roti---------------------------------------*/       
+ 
+ document.getElementById("r").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            rotipriceshow="";
+            showbill();
+
+        }else{
+        roti_q=this.value;
+        rotipriceshow= document.getElementById("billstmt").innerHTML="<tr><td>Roti</td><td>RS."+roti_p+"</td><td>"+roti_q+"</td><td>"+roti_p+"x"+roti_q+"="+roti_p*roti_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+          /* ------------------------Nan---------------------------------------*/       
+ 
+ document.getElementById("n").addEventListener("keyup",function () {
+        if(this.value==""||this.value==0){
+            nanpriceshow="";
+            showbill();
+
+        }else{
+        nan_q=this.value;
+        nanpriceshow= document.getElementById("billstmt").innerHTML="<tr><td> Nan</td><td>RS."+nan_p+"</td><td>"+nan_q+"</td><td>"+nan_p+"x"+nan_q+"="+nan_p*nan_q+"</td></tr>";
+            showbill();
+        }
+        });
+
+
+        function showbill(){
+            document.getElementById("billstmt").innerHTML= Pannerpriceshow  + PaneerCpriceshow +PaneerMpriceshow+Paneer8priceshow +Paneer5priceshow +FingerCpriceshow
+            +ChickenGpriceshow +ChickenWpriceshow + ChickenMpriceshow +AntipastoSpriceshow +BBQpriceshow +Broccolipriceshow +Caesarpriceshow +rotipriceshow +nanpriceshow;
+            document.getElementById("amount").innerHTML=Panner_p*Panner_q + PaneerC_p*PaneerC_q +PaneerM_p*PaneerM_q + Paneer8_p*Paneer8_q + Paneer5_p*Paneer5_q +
+            FingerC_p*FingerC_q + ChickenG_p*ChickenG_q +ChickenW_p*ChickenW_q + ChickenM_p*ChickenM_q + AntipastoS_p*AntipastoS_q + BBQ_p*BBQ_q + Broccoli_p*Broccoli_q +Caesar_p*Caesar_q +roti_p*roti_q  +nan_p*nan_q;
+        }
+    </script>
+</body>
+</html>
